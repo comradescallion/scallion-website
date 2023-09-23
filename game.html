@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The web site of comradescallion</title>
+    <!-- The style.css file allows you to change the look of your web pages.
+         If you include the next line in all your web pages, they will all share the same look.
+         This makes it easier to make new pages for your site. -->
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      #bounce-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+      }
+      
+      #bounce-image {
+        position: absolute;
+        width: 3vw;
+        height: 3vw;
+        background: url('scallion.png') no-repeat center center;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+  
+    <div id="bounce-container">
+      <div id="bounce-image"></div>
+    </div>
+    
+    <script>
+        
+          // bouncing scallion movement
+        const object = document.getElementById('bounce-image');
+        const container = document.getElementById('bounce-container');
+        const eyeballs = document.querySelectorAll('.eyeball, .scallion, .segmentlogo');
+        
+        object.style.height = (container.clientWidth * container.clientHeight) / 33376;
+        object.style.width = (container.clientWidth * container.clientHeight) / 33376;
+
+        let x = 0;
+        let y = 0;
+        let xDirection = 1;
+        let yDirection = 1;
+        const speed = 7;
+
+        function updatePosition() {
+            x += xDirection * speed;
+            y += yDirection * speed;
+
+            // Check collision with the right and left edges
+            if (x + object.clientWidth >= container.clientWidth || x <= 0) {
+                xDirection *= -1;
+            }
+
+            // Check collision with the top and bottom edges
+            if (y + object.clientHeight >= container.clientHeight || y <= 0) {
+                yDirection *= -1;
+            }
+
+            // Check collision with eyeballs
+            eyeballs.forEach((eyeball) => {
+                const rect = eyeball.getBoundingClientRect();
+                if (
+                  (y + object.clientHeight >= rect.top &&
+                  y + object.clientHeight <= rect.bottom) ||
+                  (y >= rect.top &&
+                  y <= rect.bottom)
+                )
+                {
+                  if (x + object.clientWidth >= rect.left - 8 && x <= rect.right + 8) {
+                    xDirection *= -1;
+                  }
+                }
+                if (
+                  (x + object.clientWidth >= rect.left &&
+                  x + object.clientWidth <= rect.right) ||
+                  (x >= rect.left &&
+                  x <= rect.right)
+                )
+                {
+                  if (y + object.clientHeight >= rect.top - 8 && y <= rect.bottom + 8) {
+                    yDirection *= -1;
+                  }
+                }
+            });
+
+            object.style.transform = `translate(${x}px, ${y}px)`;
+            requestAnimationFrame(updatePosition);
+        }
+
+        updatePosition();
+      
+    </script>
+  </body>
+</html>
