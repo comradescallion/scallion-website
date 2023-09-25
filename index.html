@@ -236,7 +236,7 @@
         let y = 0;
         let xDirection = 1;
         let yDirection = 1;
-        let speed = (container.clientWidth * container.clientHeight) / 400512;
+        let speed = (container.clientWidth) / 384;
         
         // Add a flag to control the animation
         let isMouseOver = false;
@@ -258,10 +258,10 @@
         });
 
         function updatePosition() {
-            object.style.height = `${(container.clientWidth * container.clientHeight) / 33376}px`;
-            object.style.width = `${(container.clientWidth * container.clientHeight) / 33376}px`;
+            object.style.height = `${(container.clientWidth) / 30}px`;
+            object.style.width = `${(container.clientWidth) / 30}px`;
             
-            speed = (container.clientWidth * container.clientHeight) / 400512;
+            speed = (container.clientWidth) / 384;
             x += xDirection * speed;
             y += yDirection * speed;
 
