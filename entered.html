@@ -88,9 +88,9 @@
           }
 
           for (i = 0; i < barItems.length; i++) {
-            if ((3 * centerbar.clientHeight / 4) * barItems.length > centerbar.clientWidth - (centerbar.clientWidth * 0.01)) {
-              barItems[i].style.height = `${(centerbar.clientWidth) / barItems.length - (centerbar.clientWidth * 0.01)}px`;
-              barItems[i].style.width = `${(centerbar.clientWidth) / barItems.length - (centerbar.clientWidth * 0.01)}px`;
+            if ((3 * centerbar.clientHeight / 4) * barItems.length > centerbar.clientWidth - (centerbar.clientWidth * 0.05)) {
+              barItems[i].style.height = `${(centerbar.clientWidth - (centerbar.clientWidth * 0.05)) / barItems.length}px`;
+              barItems[i].style.width = `${(centerbar.clientWidth - (centerbar.clientWidth * 0.05)) / barItems.length}px`;
             }
             else {
               barItems[i].style.height = `${3 * (centerbar.clientHeight) / 4}px`;
