@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cool scallion web site</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="scallion.png">
+    <style>
+      
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: Courier New;
+        background-color: #000000;
+    }
+      
+    img {
+        margin: 0;
+        margin-top: 0;
+        padding: 0;
+        float: left;
+    }
+
+    #centerbar {
+        width: 100%;
+        background-color: #ffce34;
+        pointer-events: auto;
+        transition: 2s;
+    }
+
+    #topbar {
+        width: 100%;
+        transition: 2s;
+      }
+
+    #container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+      }
+
+    .barItem {
+      position:relative;
+      background-color: aqua;
+      float:left;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="topbar"></div>
+      <div id="centerbar">
+        <div class="barItem"></div>
+        <div class="barItem"></div>
+        <div class="barItem"></div>
+      </div>
+    </div>
+
+    <script>
+        const centerbar = document.getElementById('centerbar');
+        const topbar = document.getElementById('topbar');
+        const container = document.getElementById('container');
+        const barItems = document.querySelectorAll('.barItem');
+
+        // Add mouseenter and mouseleave event listeners
+        isMouseOver = false;
+
+        centerbar.addEventListener('mouseenter', () => {
+          isMouseOver = true;
+        });
+
+        centerbar.addEventListener('mouseleave', () => {
+          isMouseOver = false;
+        });
+
+        function resizeBar() {
+          if (!isMouseOver) {
+            centerbar.style.height = `${(container.clientHeight) / 4}px`;
+            topbar.style.height = `${3 * (container.clientHeight) / 8}px`;
+          }
+          if (isMouseOver) {
+            centerbar.style.height = `${3 * (container.clientHeight) / 8}px`;
+            topbar.style.height = `${5 * (container.clientHeight) / 16}px`;
+          }
+
+          for (i = 0; i < barItems.length; i++) {
+            if ((3 * centerbar.clientHeight / 4) * barItems.length > centerbar.clientWidth - (centerbar.clientWidth * 0.01)) {
+              barItems[i].style.height = `${(centerbar.clientWidth) / barItems.length - (centerbar.clientWidth * 0.01)}px`;
+              barItems[i].style.width = `${(centerbar.clientWidth) / barItems.length - (centerbar.clientWidth * 0.01)}px`;
+            }
+            else {
+              barItems[i].style.height = `${3 * (centerbar.clientHeight) / 4}px`;
+              barItems[i].style.width = `${3 * (centerbar.clientHeight) / 4}px`;
+            }
+            
+            barItems[i].style.marginTop = `${((centerbar.clientHeight) - (barItems[i].clientHeight)) / 2}px`;
+
+            barItems[i].style.marginLeft = `${(((centerbar.clientWidth) - (barItems[i].clientWidth * barItems.length)) / (barItems.length + 1))}px`;
+          }
+          
+          
+          requestAnimationFrame(resizeBar);
+        }
+
+        resizeBar();
+        
+    </script>
+  </body>
+</html>
