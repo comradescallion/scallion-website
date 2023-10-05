@@ -13,6 +13,7 @@
         padding: 0 !important;
         font-family: Courier New;
         background-color: #000000;
+        overflow: hidden;
     }
       
     img {
@@ -36,9 +37,12 @@
 
     #container {
         position: relative;
+        right: 0;
         width: 100vw;
         height: 100vh;
         pointer-events: none;
+        transition-property: all;
+        transition: 1s;
       }
 
     .barItem {
@@ -67,10 +71,10 @@
     <div id="container">
       <div id="topbar"></div>
       <div id="centerbar">
-        <a href="https://www.youtube.com/comradescallion" target="_blank"><div class="barItem" style="background-image:url('entered/youtube.png');"></div></a>
-        <a href="https://scallionfarm.bandcamp.com/" target="_blank"><div class="barItem" style="background-image:url('entered/scallionfarm.png');"></div></a>
-        <a href="whoops.html" target="_blank"><div class="barItem" style="background-image:url('entered/art.png');"></div></a>
-        <a href="https://segmentobscured.neocities.org/" target="_blank"><div class="barItem" style="background-image:url('entered/segment.png');"></div></a>
+        <div class="barItem" style="background-image:url('entered/youtube.png');" onmousedown='leavePage("https://www.youtube.com/comradescallion")'></div>
+        <div class="barItem" style="background-image:url('entered/scallionfarm.png');" onmousedown='leavePage("https://scallionfarm.bandcamp.com/")'></div>
+        <div class="barItem" style="background-image:url('entered/art.png');" onmousedown='leavePage("whoops.html")'></div>
+        <div class="barItem" style="background-image:url('entered/segment.png');" onmousedown='leavePage("https://segmentobscured.neocities.org/")'></div>
       </div>
     </div>
 
@@ -140,6 +144,22 @@
         }
 
         unVeil();
+
+
+        function leavePage(targetLink) {
+          container.style.right = "100%";
+
+          setTimeout(function () {
+            window.open(targetLink, '_blank');
+            container.style.transitionProperty = "none";
+            container.style.right = "-110%";
+
+            setTimeout(function () {
+              container.style.transitionProperty = "all";
+              container.style.right = "0%";
+            }, 1000);
+          }, 1000); // Change the delay (in milliseconds) as needed
+        }
     </script>
   </body>
 </html>
