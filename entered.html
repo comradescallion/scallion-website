@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cool scallion web site</title>
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
-    <link rel="icon" type="image/x-icon" href="scallion.png">
+    <link rel="icon" type="image/x-icon" href="scallionyellow.png">
     <style>
       
     body {
@@ -43,9 +43,23 @@
 
     .barItem {
       position:relative;
-      background-color: aqua;
+      background-color: white;
+      background-size: cover; border-radius: 10%;
       float:left;
+      
     }
+
+    .barItem:hover {
+      background-color: #ffce34;
+      transition-property: background-color;
+      transition-duration: 250ms;
+      transition-timing-function: linear;
+      -webkit-animation: shadow-pop-tr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+	    animation: shadow-pop-tr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+    }
+
+
+
 
     </style>
   </head>
@@ -53,9 +67,10 @@
     <div id="container">
       <div id="topbar"></div>
       <div id="centerbar">
-        <div class="barItem"></div>
-        <div class="barItem"></div>
-        <div class="barItem"></div>
+        <a href="https://www.youtube.com/comradescallion" target="_blank"><div class="barItem" style="background-image:url('entered/youtube.png');"></div></a>
+        <a href="https://scallionfarm.bandcamp.com/" target="_blank"><div class="barItem" style="background-image:url('entered/scallionfarm.png');"></div></a>
+        <a href="whoops.html" target="_blank"><div class="barItem" style="background-image:url('entered/art.png');"></div></a>
+        <a href="https://segmentobscured.neocities.org/" target="_blank"><div class="barItem" style="background-image:url('entered/segment.png');"></div></a>
       </div>
     </div>
 
