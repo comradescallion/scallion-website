@@ -74,6 +74,9 @@
       </div>
     </div>
 
+    <div class="overlay" id="overlay" style="top: 50%;"></div>
+    <div class="overlay" id="overlay1" style="top: -50%;"></div>
+
     <script>
         const centerbar = document.getElementById('centerbar');
         const topbar = document.getElementById('topbar');
@@ -122,6 +125,21 @@
 
         resizeBar();
         
+        //unveil
+
+        function unVeil() {
+          const overlay = document.getElementById('overlay');
+          const overlay1 = document.getElementById('overlay1');
+          overlay.style.top = '75%';
+          overlay1.style.top = '-75%';
+
+          setTimeout(function () {
+            overlay.style.display = "none";
+            overlay1.style.display = "none";
+          }, 2000); // Change the delay (in milliseconds) as needed
+        }
+
+        unVeil();
     </script>
   </body>
 </html>
