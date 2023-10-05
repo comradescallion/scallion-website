@@ -315,9 +315,11 @@
         // Function to show the black overlay and navigate to the target link
         const overlay = document.getElementById('overlay');
         const overlay1 = document.getElementById('overlay1');
-
-        overlay.style.top = '100%';
-        overlay1.style.top = '-100%';
+        
+        window.onload = function() {
+          overlay.style.top = '100%';
+          overlay1.style.top = '-100%';
+        }
 
 function showOverlayAndNavigate(targetLink) {
   overlay.style.top = '50%';
