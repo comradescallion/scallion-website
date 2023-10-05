@@ -118,7 +118,7 @@
     <div class="parent">
       <div class="child2 marquee" id="mainmarq"><div>comradeScallion web page</div></div>
       <img class="child1" id="deren1" src="deren1.png" width="100%">
-      <a href="entered.html" target="_blank"><img class="child2" style="left:60.25%; top:-48.421053%; width:31.25%" onmouseover="this.src='enter4.png';" onmouseout="this.src='enter3.png';" onmousedown="this.src='enter5.png'" src="enter3.png"></a>
+      <a href="#"><img class="child2" id="clickableElement" style="left:60.25%; top:-48.421053%; width:31.25%;" onmouseover="this.src='enter4.png';" onmouseout="this.src='enter3.png';" onmousedown="this.src='enter5.png'" src="enter3.png"></a>
     </div>
     
     <div style="position:absolute; bottom:0">Website works best on PC</div>
@@ -126,6 +126,9 @@
     <div id="bounce-container">
       <a href="#scallion"><div id="bounce-image"></div></a>
     </div>
+
+    <div class="overlay" id="overlay" style="top: 100%;"></div>
+    <div class="overlay" id="overlay1" style="top: -100%;"></div>
     
     <script>
       //set marquee font size
@@ -306,6 +309,26 @@
         }
 
         updatePosition();
+
+        //closeout
+
+        // Function to show the black overlay and navigate to the target link
+function showOverlayAndNavigate(targetLink) {
+  const overlay = document.getElementById('overlay');
+  const overlay1 = document.getElementById('overlay1');
+  overlay.style.top = '50%';
+  overlay1.style.top = '-50%';
+  
+  setTimeout(function () {
+    window.location.href = targetLink;
+  }, 2000); // Change the delay (in milliseconds) as needed
+}
+
+// Add a click event listener to the clickable element
+document.getElementById('clickableElement').addEventListener('click', function () {
+  const targetLink = '/entered'; // Replace with your target link
+  showOverlayAndNavigate(targetLink);
+});
     </script>
   </body>
 </html>
