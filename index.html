@@ -328,8 +328,10 @@ function showOverlayAndNavigate(targetLink) {
   setTimeout(function () {
     window.location.href = targetLink;
 
-    overlay.style.top = '100%';
-    overlay1.style.top = '-100%';
+    setTimeout(function () {
+      overlay.style.top = '100%';
+      overlay1.style.top = '-100%';
+    }, 2000);
   }, 2000); // Change the delay (in milliseconds) as needed
   
 }
