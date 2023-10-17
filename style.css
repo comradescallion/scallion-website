@@ -47,3 +47,8 @@ body {
   pointer-events: none;
   transition: 1.5s;
 }
+
+.inactiveLink {
+  pointer-events: none;
+  cursor: default;
+}

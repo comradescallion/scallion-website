@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>cool scallion web site</title>
+        <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+        <link rel="icon" type="image/x-icon" href="scallion.png">
+        <style>
+        
+            body {
+                margin: 0 !important;
+                padding: 0 !important;
+                font-family: Courier New;
+                background-color: #ffce34;
+            }
+        
+            img {
+                margin: 0;
+                margin-top: 0;
+                padding: 0;
+                float: left;
+            }
+            
+            .overlay {
+                transition: all 1.5s cubic-bezier(.8,-1.8,.4,1.5);
+                
+            }
+        
+        
+
+        </style>
+    </head>
+    <body>
+        <div id="overlay" class="overlay" style="top:68.75%"></div>
+        <div id="overlay1" class="overlay" style="bottom:68.75%"></div>
+
+        <div style="background-color: black;"></div>
+
+        <script>
+            function unVeil() {
+                const overlay = document.getElementById('overlay');
+                const overlay1 = document.getElementById('overlay1');
+                overlay.style.top = '100%';
+                overlay1.style.bottom = '100%';
+            }
+
+            unVeil();
+        </script>
+    </body>
+</html>

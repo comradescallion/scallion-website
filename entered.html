@@ -51,7 +51,7 @@
       background-size: cover;
       border-radius: 7%;
       float:left;
-      
+      cursor: pointer;
     }
 
     .barItem:hover {
@@ -73,6 +73,7 @@
       transition-property: color;
       transition-duration: 2s;
       pointer-events:fill;
+      cursor: pointer;
     }
 
     #backButton:hover {
@@ -88,12 +89,12 @@
     <div id="container">
       <div id="topbar"></div>
       <div id="centerbar">
-        <div class="barItem" style="background-image:url('entered/youtube.png');" onmousedown='leavePage("https://www.youtube.com/comradescallion")'></div>
-        <div class="barItem" style="background-image:url('entered/scallionfarm.png');" onmousedown='leavePage("https://scallionfarm.bandcamp.com/")'></div>
-        <div class="barItem" style="background-image:url('entered/art.png');" onmousedown='leavePage("whoops.html")'></div>
-        <div class="barItem" style="background-image:url('entered/segment.png');" onmousedown='leavePage("https://segmentobscured.neocities.org/")'></div>
+        <a alt="YOUTUBE" class="barItem" tabindex="1" style="background-image:url('entered/youtube.png');" onclick='leavePage("https://www.youtube.com/comradescallion")'></a>
+        <a alt="BANDCAMP" class="barItem" tabindex="2" style="background-image:url('entered/scallionfarm.png');" onclick='leavePage("https://scallionfarm.bandcamp.com/")'></a>
+        <a alt="ART" class="barItem" tabindex="3" style="background-image:url('entered/art.png');" onclick='leavePage("whoops.html")'></a>
+        <a alt="SEGMENT[OBSCURED]" class="barItem" tabindex="4" style="background-image:url('entered/segment.png');" onclick='leavePage("https://segmentobscured.neocities.org/")'></a>
       </div>
-      <div width="100%" align="center"><div id="backButton" onmousedown="goBack('/')">go back</div></div>
+      <div width="100%" align="center"><div tabindex="5" id="backButton" onclick="goBack('/')">go back</div></div>
     </div>
 
     <div class="overlay" id="overlay" style="top: 50%;"></div>
