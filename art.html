@@ -49,6 +49,7 @@
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center; 
+                cursor: pointer;
                 
                 pointer-events: all;
                 transition: transform 0.4s cubic-bezier(0.5, 0.030, 0.5, 0.955);
@@ -70,13 +71,14 @@
             }
 
             .scrollArrow {
-                background-color: aqua; 
+                background-color: white; 
                 width: 5%; 
                 height: 10%; 
                 top:45%; 
                 position:relative; 
                 float: right;
                 pointer-events: all;
+                cursor: pointer;
             }
 
 
@@ -189,43 +191,62 @@
             isMoving = false;
 
             function scrollShowcaseL(num) {
-                if (artContainer.children[1].getBoundingClientRect().left  + (num * window.innerHeight) / 100 < document.documentElement.clientWidth - (document.documentElement.clientWidth * 0.05) && !isMoving) {
-                    if (artContainer.style.left == "") {
-                        artContainer.style.left = "0vh";
+                if (!isMoving) {
+                    if (artContainer.children[1].getBoundingClientRect().right  + (num * window.innerHeight) / 100 < document.documentElement.clientWidth - (document.documentElement.clientWidth * 0.05)) {
+                        if (artContainer.style.left == "") {
+                            artContainer.style.left = "0vh";
+                            console.log(artContainer.style.left);
+                        }
+                        artContainer.style.left = `${parseFloat(artContainer.style.left.replace("vh", "")) + num}vh`;
                         console.log(artContainer.style.left);
-                    }
-                    artContainer.style.left = `${parseFloat(artContainer.style.left.replace("vh", "")) + num}vh`;
-                    console.log(artContainer.style.left);
 
-                    isMoving = true;
-                    setTimeout(function() {
-                        isMoving = false;
-                    }, 250)
-                }
-                else {
-                    console.log(false);
-                }
-            }
-
-            function scrollShowcaseR(num) {
-                if (artContainer.children[artContainer.children.length - 2].getBoundingClientRect().right  - (num * window.innerHeight) / 100 > document.documentElement.clientWidth * 0.05 && !isMoving) {
-                    if (artContainer.style.left == "") {
-                        artContainer.style.left = "0vh";
-                        console.log(artContainer.style.left);
-                    }
-                    artContainer.style.left = `${parseFloat(artContainer.style.left.replace("vh", "")) - num}vh`;
-                    console.log(artContainer.style.left);
-
-                    isMoving = true;
+                        isMoving = true;
                         setTimeout(function() {
                             isMoving = false;
                         }, 250)
+                    }
+                    else {
+                        artContainer.style.left = `${((window.innerWidth - (window.innerWidth * 0.1) - (window.innerHeight * 0.1) - artContainer.children[1].offsetWidth) / window.innerHeight) * 100}vh`;
+
+                        console.log(`${((window.innerWidth - (window.innerWidth * 0.15) - artContainer.children[1].offsetWidth) / window.innerHeight) * 100}vh`);
+
+                        console.log(false);
+                    }
                 }
-                else {
-                    console.log(false);
+                
+            }
+
+            function scrollShowcaseR(num) {
+                if (!isMoving) {
+                    if (artContainer.children[artContainer.children.length - 2].getBoundingClientRect().left  - (num * window.innerHeight) / 100 > document.documentElement.clientWidth * 0.05) {
+                        if (artContainer.style.left == "") {
+                            artContainer.style.left = "0vh";
+                            console.log(artContainer.style.left);
+                        }
+                        artContainer.style.left = `${parseFloat(artContainer.style.left.replace("vh", "")) - num}vh`;
+                        console.log(artContainer.style.left);
+
+                        isMoving = true;
+                            setTimeout(function() {
+                                isMoving = false;
+                            }, 250)
+                    }
+                    else {
+                        artContainer.style.left = `${((-artContainer.offsetWidth + (window.innerWidth * 0.10) + artContainer.children[artContainer.children.length - 1].offsetWidth + artContainer.children[artContainer.children.length - 2].offsetWidth) / window.innerHeight) * 100}vh`;
+
+                        console.log(`${((-artContainer.offsetWidth + (window.innerWidth * 0.15) + artContainer.children[artContainer.children.length - 1].offsetWidth + 2 * artContainer.children[artContainer.children.length - 2].offsetWidth) / window.innerHeight) * 100}vh`);
+
+                        console.log(false);
+                    }
                 }
             }
             
+
+            function makeTabIndex() {
+                for (let i = 1; i < artContainer.children.length - 2; i++) {
+                    artContainer.children[i].tabIndex = i;
+                }
+            }
         </script>
     </body>
 </html>
