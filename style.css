@@ -59,6 +59,7 @@ body {
   z-index: 9999;
   pointer-events: none;
   transition: 1.5s;
+  -webkit-backface-visibility: hidden;
 }
 
 .inactiveLink {

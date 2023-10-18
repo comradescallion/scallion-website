@@ -13,6 +13,8 @@
                 padding: 0 !important;
                 font-family: Courier New;
                 background-color: black;
+                overflow-y: hidden;
+                overflow-x: hidden;
             }
         
             img {
@@ -53,17 +55,40 @@
             }
 
             #showcase {
-                overflow-x: scroll;
+                overflow-x: hidden;
+                overflow-y: hidden;
                 display: flex;
             }
-        
-        
+
+            #artContainer {
+                overflow-x: hidden;
+                overflow-y: hidden;
+                display: flex;
+                position: relative;
+                left: 0;
+                transition: left 0.25s;
+            }
+
+            .scrollArrow {
+                background-color: aqua; 
+                width: 5%; 
+                height: 10%; 
+                top:45%; 
+                position:relative; 
+                float: right;
+                pointer-events: all;
+            }
+
 
         </style>
     </head>
     <body>
-        <div id="overlay4" class="overlay" style="left:-95%; top:0; background-image: url(gradient.png);"></div>
-        <div id="overlay5" class="overlay" style="left:95%; top:0; background-image: url(gradient.png);"></div>
+        <div id="overlay4" class="overlay" style="left:-95%; top:0; background-image: url(gradient.png);">
+            <div class="scrollArrow" onclick="scrollShowcaseL(43)"></div>
+        </div>
+        <div id="overlay5" class="overlay" style="left:95%; top:0; background-image: url(gradient.png);">
+            <div class="scrollArrow" style="float:left" onclick="scrollShowcaseR(43)"></div>
+        </div>
 
         <div id="overlay2" class="overlay" style="top:50%; background-color: #ffce34;"></div>
         <div id="overlay3" class="overlay" style="bottom:50%; background-color: #ffce34;"></div>
@@ -72,13 +97,15 @@
         <div id="overlay1" class="overlay" style="bottom:68.75%"></div>
 
         <div id="showcase" style="height: 50%; position: absolute; top: 25%; left:5%">
-            <div class="art" style="width: 0; margin: 0;"></div>
-            <div class="art" id="onw"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
-            <div class="art" id="lapse"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
-            <div class="art" id="resid"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
-            <div class="art" id="cd"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
-            <div class="art" id="untitled"><div class="art1" id="untitled1" style="background-image: url(/art/untitled1.png);"></div></div>
-            <div class="art" style="width: 5%;"></div>
+            <div id="artContainer">
+                <div class="art" style="width: 0; margin: 0;"></div>
+                <div class="art" id="onw"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
+                <div class="art" id="lapse"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
+                <div class="art" id="resid"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
+                <div class="art" id="cd"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
+                <div class="art" id="untitled"><div class="art1" id="untitled1" style="background-image: url(/art/untitled1.png);"></div></div>
+                <div class="art" style="width: 100vw;"></div>
+            </div>
         </div>
         
 
@@ -154,6 +181,50 @@
             flipUnflip(resid, resid1, "url('/art/residential-relapse1.jpg')", "url('/art/residential-relapse.jpg')");
             flipUnflip(cd, cd1, "url('/art/compact-delusions1.png')", "url('/art/compact-delusions.png')");
             flipUnflip(untitled, untitled1, "url(/art/untitled1.png)", "url(/art/untitled1.png)");
+
+
+            const artContainer = document.getElementById("artContainer");
+
+            artContainer.style.left = "0vh";
+            isMoving = false;
+
+            function scrollShowcaseL(num) {
+                if (artContainer.children[1].getBoundingClientRect().left  + (num * window.innerHeight) / 100 < document.documentElement.clientWidth - (document.documentElement.clientWidth * 0.05) && !isMoving) {
+                    if (artContainer.style.left == "") {
+                        artContainer.style.left = "0vh";
+                        console.log(artContainer.style.left);
+                    }
+                    artContainer.style.left = `${parseFloat(artContainer.style.left.replace("vh", "")) + num}vh`;
+                    console.log(artContainer.style.left);
+
+                    isMoving = true;
+                    setTimeout(function() {
+                        isMoving = false;
+                    }, 250)
+                }
+                else {
+                    console.log(false);
+                }
+            }
+
+            function scrollShowcaseR(num) {
+                if (artContainer.children[artContainer.children.length - 2].getBoundingClientRect().right  - (num * window.innerHeight) / 100 > document.documentElement.clientWidth * 0.05 && !isMoving) {
+                    if (artContainer.style.left == "") {
+                        artContainer.style.left = "0vh";
+                        console.log(artContainer.style.left);
+                    }
+                    artContainer.style.left = `${parseFloat(artContainer.style.left.replace("vh", "")) - num}vh`;
+                    console.log(artContainer.style.left);
+
+                    isMoving = true;
+                        setTimeout(function() {
+                            isMoving = false;
+                        }, 250)
+                }
+                else {
+                    console.log(false);
+                }
+            }
             
         </script>
     </body>
