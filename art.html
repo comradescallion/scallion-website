@@ -32,15 +32,24 @@
                 background-size: cover; 
                 height: 40vh;
                 width: 40vh;
-                float: left;
                 position: relative;
                 margin-top: 5vh;
                 margin-left: 5vh;
-            }
 
-            .art {
                 pointer-events: all;
                 transition: transform 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+            }
+
+            .art1 {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center; 
+                
+                pointer-events: all;
+                transition: transform 0.4s cubic-bezier(0.5, 0.030, 0.5, 0.955);
             }
 
             #showcase {
@@ -53,8 +62,8 @@
         </style>
     </head>
     <body>
-        <div id="overlay4" class="overlay" style="left:-95%; top:0; background-color: green;"></div>
-        <div id="overlay5" class="overlay" style="left:95%; top:0; background-color: green;"></div>
+        <div id="overlay4" class="overlay" style="left:-95%; top:0; background-image: url(gradient.png);"></div>
+        <div id="overlay5" class="overlay" style="left:95%; top:0; background-image: url(gradient.png);"></div>
 
         <div id="overlay2" class="overlay" style="top:50%; background-color: #ffce34;"></div>
         <div id="overlay3" class="overlay" style="bottom:50%; background-color: #ffce34;"></div>
@@ -62,9 +71,14 @@
         <div id="overlay" class="overlay" style="top:68.75%"></div>
         <div id="overlay1" class="overlay" style="bottom:68.75%"></div>
 
-        <div id="showcase" style="width: 100%; height: 50%; position: absolute; top: 25%;">
-            <div class="art" id="cd" style="background-image: url(/art/compact-delusions.png);"></div>
-            <div class="art" id="onw" style="background-image: url(/art/onward-rapscallion.png);"></div>
+        <div id="showcase" style="height: 50%; position: absolute; top: 25%; left:5%">
+            <div class="art" style="width: 0; margin: 0;"></div>
+            <div class="art" id="onw"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
+            <div class="art" id="lapse"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
+            <div class="art" id="resid"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
+            <div class="art" id="cd"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
+            <div class="art" id="untitled"><div class="art1" id="untitled1" style="background-image: url(/art/untitled1.png);"></div></div>
+            <div class="art" style="width: 5%;"></div>
         </div>
         
 
@@ -86,29 +100,60 @@
             unVeil();
 
 
-            const compact = document.getElementById("cd");
             const onw = document.getElementById("onw");
+            const onw1 = document.getElementById("onw1");
+            const lapse = document.getElementById("lapse");
+            const lapse1 = document.getElementById("lapse1");
+            const cd = document.getElementById("cd");
+            const cd1 = document.getElementById("cd1");
+            const resid = document.getElementById("resid");
+            const resid1 = document.getElementById("resid1");
+            const untitled = document.getElementById("untitled");
+            const untitled1 = document.getElementById("untitled1");
 
-            function flipUnflip(myElement, image1, image2) {
+            const overlay4 = document.getElementById("overlay4");
+            const showcase = document.getElementById("showcase");
+
+            
+
+
+            function flipUnflip(myElement, element2, image1, image2) {
+                let isClicked = false;
+
+                myElement.addEventListener('click', function() {
+                    if (isClicked) {
+                        isClicked = false;
+                    }
+                    else {
+                        isClicked = true; 
+                    }
+                });
+
                 myElement.addEventListener('mouseover', function() {
-                    myElement.style.transform = "scaleX(-1)";
+                    element2.style.transform = "scaleX(-1)";
                     setTimeout(function () {
-                        if (myElement.style.transform == "scaleX(-1)") {
-                            myElement.style.backgroundImage = image1;
+                        if (element2.style.transform == "scaleX(-1)") {
+                            element2.style.backgroundImage = image1;
                         }
                     }, 200);
                 });
 
                 myElement.addEventListener('mouseout', function() {
-                    myElement.style.transform = "scaleX(1)";
-                    setTimeout(function () {
-                        myElement.style.backgroundImage = image2;
-                    }, 200);
+                    if (!isClicked) {
+                        element2.style.transform = "scaleX(1)";
+                        setTimeout(function () {
+                            element2.style.backgroundImage = image2;
+                        }, 200);
+                    }
+                    
                 });
             }
 
-            flipUnflip(cd, "url('/art/compact-delusions1.png')", "url('/art/compact-delusions.png')");
-            flipUnflip(onw, "url(/art/onward-rapscallion1.png)", "url(/art/onward-rapscallion.png)");
+            flipUnflip(onw, onw1, "url(/art/onward-rapscallion1.png)", "url(/art/onward-rapscallion.png)");
+            flipUnflip(lapse, lapse1, "url(/art/temporary-lapse1.png)", "url(/art/temporary-lapse.png)");
+            flipUnflip(resid, resid1, "url('/art/residential-relapse1.jpg')", "url('/art/residential-relapse.jpg')");
+            flipUnflip(cd, cd1, "url('/art/compact-delusions1.png')", "url('/art/compact-delusions.png')");
+            flipUnflip(untitled, untitled1, "url(/art/untitled1.png)", "url(/art/untitled1.png)");
             
         </script>
     </body>
