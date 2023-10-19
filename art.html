@@ -72,6 +72,10 @@
 
             .scrollArrow {
                 background-color: white; 
+                background-image: url(arrow.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
                 width: 5%; 
                 height: 10%; 
                 top:45%; 
@@ -86,7 +90,7 @@
     </head>
     <body>
         <div id="overlay4" class="overlay" style="left:-95%; top:0; background-image: url(gradient.png);">
-            <div class="scrollArrow" onclick="scrollShowcaseL(43)"></div>
+            <div class="scrollArrow" style="transform: scaleX(-1);" onclick="scrollShowcaseL(43)"></div>
         </div>
         <div id="overlay5" class="overlay" style="left:95%; top:0; background-image: url(gradient.png);">
             <div class="scrollArrow" style="float:left" onclick="scrollShowcaseR(43)"></div>
@@ -232,7 +236,7 @@
                             }, 250)
                     }
                     else {
-                        artContainer.style.left = `${((-artContainer.offsetWidth + (window.innerWidth * 0.10) + artContainer.children[artContainer.children.length - 1].offsetWidth + artContainer.children[artContainer.children.length - 2].offsetWidth) / window.innerHeight) * 100}vh`;
+                        artContainer.style.left = `${((-artContainer.offsetWidth + window.innerWidth) / window.innerHeight) * 100 + 45}vh`;
 
                         console.log(`${((-artContainer.offsetWidth + (window.innerWidth * 0.15) + artContainer.children[artContainer.children.length - 1].offsetWidth + 2 * artContainer.children[artContainer.children.length - 2].offsetWidth) / window.innerHeight) * 100}vh`);
 
