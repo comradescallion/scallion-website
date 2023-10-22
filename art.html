@@ -71,7 +71,7 @@
             }
 
             .scrollArrow {
-                background-color: white; 
+                background-color: black; 
                 background-image: url(arrow.png);
                 background-position: center;
                 background-size: contain;
@@ -85,10 +85,54 @@
                 cursor: pointer;
             }
 
+            #modalBackground {
+                background-image: url(gradient.png);
+                opacity: 0%;
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                z-index: 200;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                visibility: hidden;
+                transition: opacity 2s;
+            }
+
+            #modalContainer {
+                opacity: 100%;
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                z-index: 200;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                text-align: center;
+                visibility: hidden;
+                transition: top 1s cubic-bezier(.8,-1.3,.4,1.5);
+                top: 100%;
+            }
+
+            .modal {
+                display: inline-block;
+                margin: auto;
+                visibility: hidden;
+            }
+
+            #exitModal {
+                position: absolute; 
+                font-size: max(3vw, 3vh); 
+                top: max(3vw, 3vh); 
+                left: max(3vw, 3vh); 
+                background:black; 
+                color: white;
+                cursor: pointer;
+            }
+
 
         </style>
     </head>
     <body>
+        
         <div id="overlay4" class="overlay" style="left:-95%; top:0; background-image: url(gradient.png);">
             <div class="scrollArrow" style="transform: scaleX(-1);" onclick="scrollShowcaseL(45)"></div>
         </div>
@@ -102,14 +146,66 @@
         <div id="overlay" class="overlay" style="top:68.75%"></div>
         <div id="overlay1" class="overlay" style="bottom:68.75%"></div>
 
+
+        <div id="modalBackground">
+        </div>
+
+        <div id="modalContainer">
+            <div id="exitModal" onclick="undoModal()">X</div>
+            <div class="modal" id="theModal"></div>
+        </div>
+
+        
+
+        <div class="modal" id="onwMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/onward-rapscallion.png">
+            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+                <br>
+                <span style="background-color: black; color: white;">Weather Report (Onward, Rapscallion!)</span>
+            </p>
+        </div>
+
+        <div class="modal" id="lapseMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/temporary-lapse.png">
+            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+                <br>
+                <span style="background-color: black; color: white;">Snow Angel (the (temporary) lapse)</span>
+            </p>
+        </div>
+
+        <div class="modal" id="relapMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/residential-relapse.jpg">
+            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+                <br>
+                <span style="background-color: black; color: white;">Snow Angels (Residential Relapse)</span>
+            </p>
+        </div>
+
+        <div class="modal" id="cdMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/compact-delusions.png">
+            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+                <br>
+                <span style="background-color: black; color: white;">Narrative Structure (Compact Delusions)</span>
+            </p>
+        </div>
+
+        <div class="modal" id="untitledMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/untitled1.png">
+            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+                <br>
+                <span style="background-color: black; color: white;">Untitled</span>
+            </p>
+        </div>
+
+
         <div id="showcase" style="height: 50%; position: absolute; top: 25%; left:5%">
             <div id="artContainer">
                 <div class="art" style="width: 0; margin: 0;"></div>
-                <div class="art" id="onw"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
-                <div class="art" id="lapse"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
-                <div class="art" id="resid"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
-                <div class="art" id="cd"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
-                <div class="art" id="untitled"><div class="art1" id="untitled1" style="background-image: url(/art/untitled1.png);"></div></div>
+                <div class="art" id="onw" onclick="doModal(onwMod)"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
+                <div class="art" id="lapse" onclick="doModal(lapseMod)"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
+                <div class="art" id="resid" onclick="doModal(relapMod)"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
+                <div class="art" id="cd" onclick="doModal(cdMod)"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
+                <div class="art" id="untitled" onclick="doModal(untitledMod)"><div class="art1" id="untitled1" style="background-image: url(/art/untitled1.png);"></div></div>
                 <div class="art" style="width: 100vw;"></div>
             </div>
         </div>
@@ -144,23 +240,30 @@
             const untitled = document.getElementById("untitled");
             const untitled1 = document.getElementById("untitled1");
 
+            const overlay2 = document.getElementById("overlay2");
+            const overlay3 = document.getElementById("overlay3");
             const overlay4 = document.getElementById("overlay4");
+            const overlay5 = document.getElementById("overlay5");
             const showcase = document.getElementById("showcase");
 
-            
+            const modalBackground = document.getElementById("modalBackground");
+            const modalContainer = document.getElementById("modalContainer");
+            const theModal = document.getElementById("theModal");
 
+            var overlays = document.getElementsByClassName('overlay');
+            
 
             function flipUnflip(myElement, element2, image1, image2) {
                 let isClicked = false;
 
-                myElement.addEventListener('click', function() {
+                /* myElement.addEventListener('click', function() {
                     if (isClicked) {
                         isClicked = false;
                     }
                     else {
                         isClicked = true; 
                     }
-                });
+                }); */
 
                 myElement.addEventListener('mouseover', function() {
                     element2.style.transform = "scaleX(-1)";
@@ -175,7 +278,9 @@
                     if (!isClicked) {
                         element2.style.transform = "scaleX(1)";
                         setTimeout(function () {
-                            element2.style.backgroundImage = image2;
+                            if (element2.style.transform == "scaleX(1)") {
+                                element2.style.backgroundImage = image2;
+                            }
                         }, 200);
                     }
                     
@@ -250,6 +355,40 @@
                 for (let i = 1; i < artContainer.children.length - 2; i++) {
                     artContainer.children[i].tabIndex = i;
                 }
+            }
+
+
+            function doModal(modElement) {
+                for(var i=0; i<overlays.length; i++){
+                    overlays[i].style.transition = 'all 1s cubic-bezier(.8,-1.8,.4,1.5)';
+                }
+
+                //modalBackground.style.visibility = "visible";
+                //modalBackground.style.opacity = "100%";
+                modalContainer.style.visibility = "visible";
+                modalContainer.style.top = "0%";
+
+                overlay2.style.top = "100%";
+                overlay3.style.bottom = "100%";
+
+                overlay4.style.left = "-50%";
+                overlay5.style.left = "50%";
+
+                theModal.innerHTML = modElement.innerHTML;
+                theModal.style.visibility = "visible";
+            }
+
+            function undoModal() {
+
+                //modalBackground.style.visibility = "visible";
+                //modalBackground.style.opacity = "100%";
+                modalContainer.style.top = "100%";
+
+                overlay2.style.top = "75%";
+                overlay3.style.bottom = "75%";
+
+                overlay4.style.left = "-95%";
+                overlay5.style.left = "95%";
             }
         </script>
     </body>
