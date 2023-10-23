@@ -83,6 +83,8 @@
                 float: right;
                 pointer-events: all;
                 cursor: pointer;
+                opacity: 100%;
+                transition: opacity 1s cubic-bezier(.8,-1.8,.4,1.5);
             }
 
             #modalBackground {
@@ -128,6 +130,10 @@
                 cursor: pointer;
             }
 
+            p {
+                font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;
+            }
+
 
         </style>
     </head>
@@ -159,7 +165,7 @@
 
         <div class="modal" id="onwMod">
             <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/onward-rapscallion.png">
-            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+            <p>
                 <br>
                 <span style="background-color: black; color: white;">Weather Report (Onward, Rapscallion!)</span>
             </p>
@@ -167,7 +173,7 @@
 
         <div class="modal" id="lapseMod">
             <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/temporary-lapse.png">
-            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+            <p>
                 <br>
                 <span style="background-color: black; color: white;">Snow Angel (the (temporary) lapse)</span>
             </p>
@@ -175,7 +181,7 @@
 
         <div class="modal" id="relapMod">
             <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/residential-relapse.jpg">
-            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+            <p>
                 <br>
                 <span style="background-color: black; color: white;">Snow Angels (Residential Relapse)</span>
             </p>
@@ -183,7 +189,7 @@
 
         <div class="modal" id="cdMod">
             <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/compact-delusions.png">
-            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+            <p>
                 <br>
                 <span style="background-color: black; color: white;">Narrative Structure (Compact Delusions)</span>
             </p>
@@ -191,7 +197,7 @@
 
         <div class="modal" id="untitledMod">
             <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/untitled1.png">
-            <p style="font-size: max(2vw, 2vh, 0.75em); font-weight: bold; display: block;">
+            <p>
                 <br>
                 <span style="background-color: black; color: white;">Untitled</span>
             </p>
@@ -251,6 +257,7 @@
             const theModal = document.getElementById("theModal");
 
             var overlays = document.getElementsByClassName('overlay');
+            var scrollArrows = document.getElementsByClassName('scrollArrow');
             
 
             function flipUnflip(myElement, element2, image1, image2) {
@@ -363,6 +370,10 @@
                     overlays[i].style.transition = 'all 1s cubic-bezier(.8,-1.8,.4,1.5)';
                 }
 
+                for (var i=0; i<scrollArrows.length; i++) {
+                    scrollArrows[i].style.opacity = '0%';
+                }
+
                 //modalBackground.style.visibility = "visible";
                 //modalBackground.style.opacity = "100%";
                 modalContainer.style.visibility = "visible";
@@ -379,6 +390,9 @@
             }
 
             function undoModal() {
+                for (var i=0; i<scrollArrows.length; i++) {
+                    scrollArrows[i].style.opacity = '100%';
+                }
 
                 //modalBackground.style.visibility = "visible";
                 //modalBackground.style.opacity = "100%";
