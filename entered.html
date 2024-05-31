@@ -49,18 +49,23 @@
       position:relative;
       background-color: white;
       background-size: cover;
-      border-radius: 7%;
+      /* border-radius: 7%; */
       float:left;
       cursor: pointer;
+
+      transition: opacity 0.5s ease-in-out;
+      -moz-transition: opacity 0.5s ease-in-out;
+      -webkit-transition: opacity 0.5s ease-in-out;
     }
 
     .barItem:hover {
       background-color: #ffce34;
-      transition-property: background-color;
-      transition-duration: 250ms;
-      transition-timing-function: linear;
       -webkit-animation: shadow-pop-tr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
 	    animation: shadow-pop-tr 0.3s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+
+      transition: opacity 0.5s ease-in-out, background-color 250ms linear;
+      -moz-transition: opacity 0.5s ease-in-out, background-color 250ms linear;
+      -webkit-transition: opacity 0.5s ease-in-out, background-color 250ms linear;
     }
 
     #backButton {
@@ -89,10 +94,12 @@
     <div id="container">
       <div id="topbar"></div>
       <div id="centerbar">
-        <a alt="YOUTUBE" class="barItem" tabindex="1" style="background-image:url('entered/youtube.png');" onclick='leavePage("https://www.youtube.com/comradescallion")'></a>
-        <a alt="BANDCAMP" class="barItem" tabindex="2" style="background-image:url('entered/scallionfarm.png');" onclick='leavePage("https://scallionfarm.bandcamp.com/")'></a>
-        <a alt="ART" class="barItem" tabindex="3" style="background-image:url('entered/art.png');" href="/art.html"></a>
-        <a alt="SEGMENT[OBSCURED]" class="barItem" tabindex="4" style="background-image:url('entered/segment.png');" onclick='leavePage("https://segmentobscured.neocities.org/")'></a>
+        <!-- <a alt="YOUTUBE" class="barItem" tabindex="1" style="background-image:url('entered/youtube.png');" onclick='leavePage("https://www.youtube.com/comradescallion")'></a>
+        <a alt="BANDCAMP" class="barItem" tabindex="2" style="background-image:url('entered/scallionfarm.png');" onclick='leavePage("https://scallionfarm.bandcamp.com/")'></a> -->
+        <a alt="SOCIALS" title="SOCIALS" class="barItem" tabindex="1" style="background-image:url('entered/socials.png');" onclick='showSocials()'></a>
+        <a alt="GEOCITIES" title="GEOCITIES" class="barItem" tabindex="2" style="background-image:url('entered/geocities.png');" href="mypage.html" target="_blank"></a>
+        <a alt="ART" title="ART" class="barItem" tabindex="3" style="background-image:url('entered/art.png');" href="/art.html"></a>
+        <a alt="SEGMENT[OBSCURED]" title="SEGMENT[OBSCURED]" class="barItem" tabindex="4" style="background-image:url('entered/segment.png');" href="https://segmentobscured.neocities.org/" target="_blank"></a>
       </div>
       <div width="100%" align="center"><div tabindex="5" id="backButton" onclick="goBack('/')">go back</div></div>
     </div>
@@ -104,7 +111,10 @@
         const centerbar = document.getElementById('centerbar');
         const topbar = document.getElementById('topbar');
         const container = document.getElementById('container');
-        const barItems = document.querySelectorAll('.barItem');
+        barItems = document.querySelectorAll('.barItem');
+
+        //for returning from socials
+        var origItems;
 
         // Add mouseenter and mouseleave event listeners
         isMouseOver = false;
@@ -171,7 +181,7 @@
         // Safari 3.0+ "[object HTMLElementConstructor]" 
         var isSafari = (/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification)));
         
-        function leavePage(targetLink) {
+        /* function leavePage(targetLink) {
           container.style.right = "100%";
 
           setTimeout(function () {
@@ -190,7 +200,7 @@
               container.style.right = "0%";
             }, 1000);
           }, 1000); // Change the delay (in milliseconds) as needed
-        }
+        } NOT CURRENTLY IN USE*/
 
         function goBack(targetLink) {
           container.style.right = "-100%";
@@ -207,6 +217,62 @@
           }, 1000); // Change the delay (in milliseconds) as needed
         }
         
+        function showSocials() {
+          origItems = centerbar.innerHTML;
+          //change opacity
+
+          for (i = 0; i < barItems.length; i++) {
+            barItems[i].style.opacity = "0"
+          }
+
+          //add new items
+          setTimeout(function () {
+
+            centerbar.innerHTML = "";
+
+            centerbar.innerHTML += `<a alt="BACK" title="BACK" class="barItem" tabindex="1" style="background-image:url('entered/back.png');" onclick='socialsReturn()'></a>`;
+            centerbar.innerHTML += `<a alt="YOUTUBE" title="YOUTUBE" class="barItem" tabindex="2" style="background-image:url('entered/youtube.png');" href="https://www.youtube.com/comradescallion" target="_blank")'></a>`;
+            centerbar.innerHTML += `<a alt="BANDCAMP" title="BANDCAMP" class="barItem" tabindex="3" style="background-image:url('entered/scallionfarm.png');" href="https://scallionfarm.bandcamp.com/" target="_blank")'></a>`;
+
+            //reset pointer
+            barItems = document.querySelectorAll('.barItem');
+            //make transparent
+            for (j = 0; j < barItems.length; j++) {
+              barItems[j].style.opacity = 0;
+            }
+
+            setTimeout(function () {
+              for (j = 0; j < barItems.length; j++) {
+              barItems[j].style.opacity = 1;
+            }
+            }, 1);
+          }, 500);
+        }
+
+        //same as showsocials but using original items
+        function socialsReturn() {
+          for (i = 0; i < barItems.length; i++) {
+            barItems[i].style.opacity = "0"
+          }
+
+          setTimeout(function () {
+
+            centerbar.innerHTML = origItems;
+
+            //reset pointer
+            barItems = document.querySelectorAll('.barItem');
+            //make transparent
+            for (j = 0; j < barItems.length; j++) {
+              barItems[j].style.opacity = 0;
+            }
+
+            setTimeout(function () {
+              for (j = 0; j < barItems.length; j++) {
+              barItems[j].style.opacity = 1;
+            }
+            }, 1);
+            }, 500);
+        }
     </script>
   </body>
 </html>
