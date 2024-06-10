@@ -118,6 +118,7 @@
                 display: inline-block;
                 margin: auto;
                 visibility: hidden;
+                text-align: center;
             }
 
             #exitModal {
@@ -164,7 +165,7 @@
         
 
         <div class="modal" id="onwMod">
-            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/onward-rapscallion.png">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/onward-rapscallion.png">
             <p>
                 <br>
                 <span style="background-color: black; color: white;">Weather Report (Onward, Rapscallion!)</span>
@@ -172,7 +173,7 @@
         </div>
 
         <div class="modal" id="lapseMod">
-            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/temporary-lapse.png">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/temporary-lapse.png">
             <p>
                 <br>
                 <span style="background-color: black; color: white;">Snow Angel (the (temporary) lapse)</span>
@@ -180,7 +181,7 @@
         </div>
 
         <div class="modal" id="relapMod">
-            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/residential-relapse.jpg">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/residential-relapse.jpg">
             <p>
                 <br>
                 <span style="background-color: black; color: white;">Snow Angels (Residential Relapse)</span>
@@ -188,18 +189,26 @@
         </div>
 
         <div class="modal" id="cdMod">
-            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/compact-delusions.png">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/compact-delusions.png">
             <p>
                 <br>
                 <span style="background-color: black; color: white;">Narrative Structure (Compact Delusions)</span>
             </p>
         </div>
 
-        <div class="modal" id="untitledMod">
-            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em);" src="art/untitled1.png">
+        <div class="modal" id="actionMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/action.png">
             <p>
                 <br>
-                <span style="background-color: black; color: white;">Untitled</span>
+                <span style="background-color: black; color: white;">Action</span>
+            </p>
+        </div>
+
+        <div class="modal" id="selectMod">
+            <img id="modImg" style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/scallion-selections.png">
+            <p>
+                <br>
+                <span style="background-color: black; color: white;">A BOUNTIFUL HARVEST (Scallion Selections)</span>
             </p>
         </div>
 
@@ -212,7 +221,8 @@
                 <div class="art" id="lapse" onclick="doModal(lapseMod)"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
                 <div class="art" id="resid" onclick="doModal(relapMod)"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
                 <div class="art" id="cd" onclick="doModal(cdMod)"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
-                <div class="art" id="untitled" onclick="doModal(untitledMod)"><div class="art1" id="untitled1" style="background-image: url(/art/untitled1.png);"></div></div>
+                <div class="art" id="action" onclick="doModal(actionMod)"><div class="art1" id="action1" style="background-image: url(/art/action.png);"></div></div>
+                <div class="art" id="select" onclick="doModal(selectMod)"><div class="art1" id="select1" style="background-image: url(/art/scallion-selections.png);"></div></div>
                 <div class="art" id="back2" onclick="goBack()"><div class="art1" id="back22" style="background-image: url(art/back.png);"></div></div>
                 <div class="art" style="width: 100vw;"></div>
             </div>
@@ -248,8 +258,10 @@
             const cd1 = document.getElementById("cd1");
             const resid = document.getElementById("resid");
             const resid1 = document.getElementById("resid1");
-            const untitled = document.getElementById("untitled");
-            const untitled1 = document.getElementById("untitled1");
+            const action = document.getElementById("action");
+            const action1 = document.getElementById("action1");
+            const select = document.getElementById("select");
+            const select1 = document.getElementById("select1");
 
             const back1 = document.getElementById("back1");
             const back2 = document.getElementById("back2");
@@ -310,7 +322,8 @@
             flipUnflip(lapse, lapse1, "url(/art/temporary-lapse1.png)", "url(/art/temporary-lapse.png)");
             flipUnflip(resid, resid1, "url('/art/residential-relapse1.jpg')", "url('/art/residential-relapse.jpg')");
             flipUnflip(cd, cd1, "url('/art/compact-delusions1.png')", "url('/art/compact-delusions.png')");
-            flipUnflip(untitled, untitled1, "url(/art/untitled1.png)", "url(/art/untitled1.png)");
+            flipUnflip(action, action1, "url(/art/action.png)", "url(/art/action.png)");
+            flipUnflip(select, select1, "url(/art/scallion-selections1.png)", "url(/art/scallion-selections.png)");
 
             flipUnflip(back1, back12, "url(/art/back.png)", "url(/art/back.png)");
             flipUnflip(back2, back22, "url(/art/back.png)", "url(/art/back.png)");
@@ -401,6 +414,10 @@
 
                 theModal.innerHTML = modElement.innerHTML;
                 theModal.style.visibility = "visible";
+
+                /* modImg = document.getElementById("modImg");
+                theModal.style.width = modImg.clientWidth + "px";
+                console.log(modImg.clientWidth); */
             }
 
             function undoModal() {
