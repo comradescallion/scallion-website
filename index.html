@@ -30,6 +30,8 @@
         padding: 0;
         float: left;
         width:100%;
+
+        transition: 0.3s;
       }
       .child1 {
         position: relative;
@@ -83,6 +85,13 @@
         pointer-events: auto;
       }
       
+      @media (max-width: 800px) {
+        .parent {
+          width: 140%;
+          left: -28%;
+          transition: 0.3s;
+        }
+      }
       
       
 
