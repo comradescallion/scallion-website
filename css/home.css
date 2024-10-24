@@ -1,0 +1,63 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#bannerCont {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 3.5vw;
+
+    transition: width 1s;
+}
+
+#banner1 {
+    width: 100%;
+}
+
+#marqCont {
+    width: 100%;
+    position: relative;
+}
+
+#banner2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#marquee {
+    animation: fontShrink 1s forwards;
+}
+
+#marquee div {
+    animation: marquee 10s linear infinite;
+    width: fit-content;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(150%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes fontShrink {
+    0%      {font-size: 7vw;}
+    100%    {font-size: 3.5vw;}
+}
+
+@keyframes fontGrow {
+    0%      {font-size: inherit;}
+    100%    {font-size: 7vw;}
+}
+
+@media only screen and (max-width: 600px) {
+    #bannerCont {
+        width: 200%;
+    }
+
+    #marquee {
+        animation: fontGrow 1s linear forwards;
+    }
+}
