@@ -1,16 +1,19 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier Prime", monospace;
+
+    overflow: hidden;
 }
 
 #bannerCont {
+    position: absolute;
     width: 100%;
+    left: 0;
     display: flex;
     flex-wrap: wrap;
-    font-size: 3.5vw;
 
-    transition: width 1s;
+    transition: width 0.5s, left 0.5s;
 }
 
 #banner1 {
@@ -20,6 +23,7 @@ body {
 #marqCont {
     width: 100%;
     position: relative;
+    font-size: 100;
 }
 
 #banner2 {
@@ -28,36 +32,74 @@ body {
     width: 100%;
 }
 
+#banner3 {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    transform: scaleY(-1);
+    visibility: hidden;
+}
+
 #marquee {
-    animation: fontShrink 1s forwards;
+    font-size: 3.7vw;
+    
+    transition: font-size 0.5;
 }
 
 #marquee div {
-    animation: marquee 10s linear infinite;
     width: fit-content;
+    text-wrap: nowrap;
+    position: relative;
+}
+
+#marquee div div {
+    position: relative;
+    animation: marquee 5s linear infinite;
+
+    transition: animation 1s;
+}
+
+#enter {
+    width: 30%;
+    height: 45%;
+    font-size: auto;
+    font-weight: bold;
+    position: absolute;
+    right: 9%;
+    top: 77.8%;
+    background: linear-gradient(90deg, rgb(69, 187, 23) 0%, rgb(161, 61, 61) 50%,rgba(0,212,255,1) 100%);
+    transform: matrix3d(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
+      );
+    transform-origin: center right;
 }
 
 @keyframes marquee {
-    0%   { transform: translateX(150%); }
-    100% { transform: translateX(-100%); }
+    0%      {left: calc(75vw);}
+    100%    {left: calc(-100%);}
 }
 
-@keyframes fontShrink {
-    0%      {font-size: 7vw;}
-    100%    {font-size: 3.5vw;}
+@keyframes marqueeVert {
+    0%      {left: calc(100vw + 35%);}
+    100%    {left: calc(-65%);}
 }
 
-@keyframes fontGrow {
-    0%      {font-size: inherit;}
-    100%    {font-size: 7vw;}
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
     #bannerCont {
         width: 200%;
+        left: -35%;
     }
 
     #marquee {
-        animation: fontGrow 1s linear forwards;
+        font-size: 7vw;
+        width: 100vw;
     }
+
+    #marquee div div {
+        animation: marqueeVert 5s linear infinite;
+    }
+    
 }
