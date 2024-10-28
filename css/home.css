@@ -80,12 +80,19 @@ body {
 
 #eye1 {
     clip-path: circle(2.5% at 34.4% 8.6vw);
+    opacity: 1;
+    background-color: aquamarine;
 }
 #eye2 {
     clip-path: circle(2.5% at 38.1% 9.5vw);
+    opacity: 1;
 }
 
 #eye1:hover ~ #eyeImg, #eye2:hover ~ #eyeImg{
+    opacity: 0.5;
+}
+
+#eye1:checked ~ #eyeImg, #eye2:checked ~ #eyeImg{
     opacity: 1;
 }
 
