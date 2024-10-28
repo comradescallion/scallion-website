@@ -40,9 +40,60 @@ body {
     visibility: hidden;
 }
 
-.overlay {
+#eye1, #eye2, #scallion {
     position: absolute;
     width: 100%;
+    height: 27.35vw;
+
+    z-index: 1;
+}
+
+#scallion {
+    clip-path: polygon(
+        27.3% 22.9vw, 
+        29.5% 19.4vw, 
+        28.7% 20.1vw, 
+        28.5% 16.6vw, 
+        30.3% 18.1vw, 
+        30.9% 17.6vw, 
+        34.1% 18.4vw, 
+        35.4% 18.9vw, 
+        34.8% 19.6vw, 
+        35% 20.8vw, 
+        34.5% 22.1vw, 
+        33.7% 21.8vw, 
+        32.3% 22.8vw, 
+        30.5% 23.8vw, 
+        29.5% 25.6vw);
+}
+
+#scallion:hover + #scalImg{
+    opacity: 1;
+}
+
+#scalImg {
+    position: absolute;
+    width: 100%;
+    height: 27.35vw;
+    opacity: 0;
+}
+
+#eye1 {
+    clip-path: circle(2.5% at 34.4% 8.6vw);
+}
+#eye2 {
+    clip-path: circle(2.5% at 38.1% 9.5vw);
+}
+
+#eye1:hover ~ #eyeImg, #eye2:hover ~ #eyeImg{
+    opacity: 1;
+}
+
+#eyeImg {
+    position: absolute;
+    width: 100%;
+    height: 27.35vw;
+    opacity: 0;
 }
 
 #marquee {
@@ -72,6 +123,8 @@ body {
     height: 15vw;
     left: 60.5%;
     top: 4vw;
+
+    z-index: 2;
 }
 
 #segment:hover {
@@ -92,6 +145,8 @@ body {
     transform-style: preserve-3d;
 
     transition: opacity 0.5s;
+
+    z-index: 3;
 }
 
 #enter:hover {
@@ -149,4 +204,8 @@ body {
     #enter {
         opacity: 1;
     }
+
+    #scalImg, #eyeImg {
+        display: none;
+    } 
 }
