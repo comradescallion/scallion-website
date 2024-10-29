@@ -6,6 +6,7 @@ body {
     overflow: hidden;
 }
 
+
 #bannerCont {
     position: absolute;
     width: 100%;
@@ -40,12 +41,24 @@ body {
     visibility: hidden;
 }
 
+
 #eye1, #eye2, #scallion {
     position: absolute;
     width: 100%;
     height: 27.35vw;
+    cursor: pointer;
+    opacity: 0;
 
     z-index: 1;
+}
+
+#eye1Img, #eye2Img, #scalImg {
+    position: absolute;
+    width: 100%;
+    height: 27.35vw;
+    opacity: 0;
+
+    animation: previewFade 15s ease delay iteration-count direction fill-mode;
 }
 
 #scallion {
@@ -67,41 +80,25 @@ body {
         29.5% 25.6vw);
 }
 
-#scallion:hover + #scalImg{
-    opacity: 1;
-}
-
-#scalImg {
-    position: absolute;
-    width: 100%;
-    height: 27.35vw;
-    opacity: 0;
-}
-
 #eye1 {
-    clip-path: circle(2.5% at 34.4% 8.6vw);
-    opacity: 1;
-    background-color: aquamarine;
+    clip-path: circle(2.5vw at 34.4vw 8.6vw);
 }
 #eye2 {
     clip-path: circle(2.5% at 38.1% 9.5vw);
-    opacity: 1;
 }
 
-#eye1:hover ~ #eyeImg, #eye2:hover ~ #eyeImg{
+#eye1:hover ~ #eye1Img,
+#eye2:hover ~ #eye2Img,
+#scallion:hover + #scalImg {
     opacity: 0.5;
 }
 
-#eye1:checked ~ #eyeImg, #eye2:checked ~ #eyeImg{
+#eye1:checked ~ #eye1Img,
+#eye2:checked ~ #eye2Img,
+#scallion:checked + #scalImg {
     opacity: 1;
 }
 
-#eyeImg {
-    position: absolute;
-    width: 100%;
-    height: 27.35vw;
-    opacity: 0;
-}
 
 #marquee {
     font-size: 3.7vw;
@@ -130,6 +127,7 @@ body {
     height: 15vw;
     left: 60.5%;
     top: 4vw;
+    cursor: pointer;
 
     z-index: 2;
 }
@@ -193,6 +191,14 @@ body {
     100%    {translate: calc(-65%);}
 }
 
+@keyframes previewFade {
+    0% {opacity: 0;}
+    96% {opacity: 0;}
+    97% {opacity: 0.5;}
+    98% {opacity: 0;}
+    99% {opacity: 0.5;}
+}
+
 @media only screen and (max-width: 650px) {
     #bannerCont {
         width: 200%;
@@ -212,7 +218,7 @@ body {
         opacity: 1;
     }
 
-    #scalImg, #eyeImg {
+    #scalImg, #eye1Img, #eye2Img {
         display: none;
     } 
 }
