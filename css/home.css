@@ -260,7 +260,7 @@ body {
     100%    {transform: perspective(0.27vw) rotateX(0deg) skewX(0deg) skewY(-14.7deg) rotateY(0.075deg) translate(-63%, 0)}
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-aspect-ratio: 4/5) {
     #bannerCont {
         width: 200%;
         left: -35%;
