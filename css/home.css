@@ -36,9 +36,13 @@ body {
 #banner3 {
     position: absolute;
     width: 100%;
-    top: 100%;
-    transform: scaleY(-1);
-    visibility: hidden;
+    top: 85%;
+    opacity: 1;
+
+    clip-path: polygon(
+        100% 0%, 
+        100% 100%, 
+        100% 100%);
 }
 
 
@@ -162,6 +166,7 @@ body {
     height: 45%;
     font-size: 15.5vw;
     font-weight: bold;
+    color: black;
     text-align: center;
     position: absolute;
     right: 9%;
@@ -235,6 +240,24 @@ body {
     100% {transform: translate(-22vw, 21vw) scale(1.7);}
 }
 
+@keyframes bannerRev {
+    0% {clip-path: polygon(
+        100% 0%, 
+        100% 100%, 
+        100% 100%, 
+        89.17% 0%);}
+    100% {clip-path: polygon(
+        100% 0%, 
+        100% 100%, 
+        0% 100%,
+        -10.83% 0%);}
+}
+
+@keyframes enterRev {
+    0%      {transform: perspective(0.27vw) rotateX(0deg) skewX(0deg) skewY(-14.7deg) rotateY(0.075deg) translate(100%, 0);}
+    100%    {transform: perspective(0.27vw) rotateX(0deg) skewX(0deg) skewY(-14.7deg) rotateY(0.075deg) translate(-65%, 0)}
+}
+
 @media only screen and (max-width: 650px) {
     #bannerCont {
         width: 200%;
@@ -248,11 +271,6 @@ body {
 
     #marquee div div {
         animation: marqueeVert 7s linear infinite;
-    }
-    
-    #enter {
-        opacity: 0;
-        pointer-events: none;
     }
 
     #scallion {
@@ -297,5 +315,21 @@ body {
         opacity: 0;
 
         z-index: 1;
+    }
+
+    #banner3 {
+        opacity: 1;
+
+        animation: bannerRev 2.3s forwards;
+    }
+
+    #enter {
+        font-size: 23.25vw;
+        opacity: 1;
+        top: 123%;
+        transform: perspective(0.27vw) rotateX(0deg) skewX(0deg) skewY(-14.7deg) rotateY(0.075deg) translate(80%, 0);
+        transform-origin: center left;
+
+        animation: enterRev 2s 0.5s forwards;
     }
 }
