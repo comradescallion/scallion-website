@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cool scallion web site</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="scallion.png">
+    <style>
+      
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: Courier New;
+      }
+      
+      img {
+        margin: 0;
+        margin-top: 0;
+        padding: 0;
+        float: left;
+      }
+      
+      .parent {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0;
+        margin-top: 0;
+        padding: 0;
+        float: left;
+        width:100%;
+
+        transition: 0.3s;
+      }
+      .child1 {
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+      .child2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      
+      marquee {
+        float: left;
+      }
+      
+      .marquee {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .marquee * {
+        display: inline-block;
+        animation: marquee 10s linear infinite;
+      }
+
+      /* .eyeball{
+        background-color:#ff000077;
+      } */
+
+      @keyframes marquee {
+        0%   { transform: translateX(150%); }
+        100% { transform: translateX(-100%); }
+      }
+      
+      #bounce-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+      }
+      
+      #bounce-image {
+        position: absolute;
+        width: 3vw;
+        height: 3vw;
+        background: url('scallion.png') no-repeat center center;
+        background-size: cover;
+        pointer-events: auto;
+      }
+      
+      @media (max-width: 800px) {
+        .parent {
+          width: 140%;
+          left: -28%;
+          transition: 0.3s;
+        }
+      }
+      
+      
+
+    </style>
+  </head>
+  <body>
+    
+    <div class="parent">
+      <img id="derenbanner" class="child1" src="deren.png" width="100%">
+      <img class="child2 scallionhand" src="derenscal1.png" width="100%" style="visibility:hidden;">
+      <img class="child2 resident" src="dereneyes.png" width="100%" style="visibility:hidden;">
+      <a href="https://segmentobscured.neocities.org/" target="_blank"><img alt="segment[Obscured]" class="child2 segmentlogo" style="left:60.6%; top:16.0%; width:15.4%" src="logos/segment.png" onmouseover="this.src='logos/seyegment.gif';" onmouseout="this.src='logos/segment.png';"></a>
+      <!-- residents -->
+      <a href="#"><img class="child2 eyeball" style="left:32.7%; top:25.777%; width:3.4%; height:12.517%;border-radius:40%" src="blank.png"></a>
+      <a href="#"><img class="child2 eyeball" style="left:36.45%; top:28.713%; width:3.3%; height:12.678%; border-radius:40%" src="blank.png"></a>
+      <!-- scallion -->
+      <a href="#"><img class="child2 scallion" style="left:28.55%; top:61.06%; width:0.55%; height:12.614%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.55%; top:63.254%; width:0.8%; height:10.42%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.55%; top:64.899%; width:3.9%; height:8.775%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.55%; top:66.91%; width:6.15%; height:6.764%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:29.1%; top:73.675%; width:5.6%; height:6.216%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:32.25%; top:79.89%; width:1.35%; height:10.238%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.75%; top:76.782%; width:3.5%; height:6.399%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.2%; top:78.611%; width:3.05%; height:6.216%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:27.9%; top:80.804%; width:2.8%; height:6.033%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:27.45%; top:82.084%; width:0.45%; height:3.656%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.5%; top:86.837%; width:1.9%; height:3.108%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:28.15%; top:86.837%; width:2.25%; height:1.645%" src="blank.png"></a>
+      <a href="#"><img class="child2 scallion" style="left:29%; top:89.945%; width:0.85%; height:3.108%" src="blank.png"></a>
+      
+      <!-- <a href="#"><img class="child2 scallion" style="left:25%; top:0%; width:50%; height:100%; clip-path: polygon(5% 84%, 8% 76%, 7% 69%, 7% 61%, 11% 65%, 16% 66%, 19% 68%, 20% 72%, 20% 76%, 20% 81%, 17% 81%, 18% 87%, 17% 96%, 14% 84%, 11% 89%, 9% 94%);;" src="blank.png"></a> -->
+    </div>
+    
+    <div class="parent">
+      <div class="child2 marquee" id="mainmarq"><div>rainaScallion web page</div></div>
+      <img class="child1" id="deren1" src="deren1.png" width="100%">
+      <a href="#"><img class="child2" alt="ENTER" id="clickableElement" style="left:60.25%; top:-48.421053%; width:31.25%;" onmouseover="this.src='enter4.png';" onmouseout="this.src='enter3.png';" onmousedown="this.src='enter5.png'" src="enter3.png"></a>
+    </div>
+    
+    <div style="position:absolute; bottom:0">Website works best on PC</div>
+    
+    <div id="bounce-container">
+      <a href="#scallion"><div id="bounce-image"></div></a>
+    </div>
+
+    <div class="overlay" id="overlay" style="top: 100%;"></div>
+    <div class="overlay" id="overlay1" style="top: -100%;"></div>
+    
+    <script>
+      //set marquee font size
+      const deren1Img = document.getElementById("deren1");
+      const mainmarq = document.getElementById("mainmarq");
+      let deren1Height = document.getElementById("deren1").offsetHeight;
+
+      function marqueeSize() {
+        deren1Height = document.getElementById("deren1").offsetHeight;
+        mainmarq.style.fontSize = `${deren1Height / 4}px`;
+        requestAnimationFrame(marqueeSize);
+      }
+      
+      marqueeSize();
+      
+      //the residents
+      // Get all the Area elements with class "eyeball"
+      var areas = document.querySelectorAll(".eyeball");
+
+      // Get all the images with class "resident"
+      var residents = document.querySelectorAll(".resident");
+
+      // Loop through each Area element
+      for (var i = 0; i < areas.length; i++) {
+        // Add a mouseover event listener
+        areas[i].addEventListener("mouseover", function() {
+          // Loop through each image and make it visible
+          for (var j = 0; j < residents.length; j++) {
+            residents[j].style.visibility = "visible";
+          }
+        });
+
+        // Add a mouseout event listener
+        areas[i].addEventListener("mouseout", function() {
+          // Loop through each image and make it hidden, but only if it hasn't been clicked
+          for (var j = 0; j < residents.length; j++) {
+            if (!residents[j].getAttribute("data-clicked")) {
+              residents[j].style.visibility = "hidden";
+            }
+          }
+        });
+
+        // Add a click event listener
+        areas[i].addEventListener("click", function() {
+          // Loop through each image and toggle its visibility and set data-clicked attribute
+          for (var j = 0; j < residents.length; j++) {
+            if (residents[j].getAttribute("data-clicked")) {
+              residents[j].style.visibility = "hidden";
+              residents[j].removeAttribute("data-clicked");
+            } else {
+              residents[j].style.visibility = "visible";
+              residents[j].setAttribute("data-clicked", true);
+            }
+          }
+        });
+      }
+      
+      //the scallion
+      // Get all the Area elements with class "scallion"
+      var scareas = document.querySelectorAll(".scallion");
+
+      // Get all the images with class "scallionhand"
+      var scallions = document.querySelectorAll(".scallionhand");
+
+      // Loop through each Area element
+      for (var i = 0; i < scareas.length; i++) {
+        // Add a mouseover event listener
+        scareas[i].addEventListener("mouseover", function() {
+          // Loop through each image and make it visible
+          for (var j = 0; j < scallions.length; j++) {
+            scallions[j].style.visibility = "visible";
+          }
+        });
+
+        // Add a mouseout event listener
+        scareas[i].addEventListener("mouseout", function() {
+          // Loop through each image and make it hidden, but only if it hasn't been clicked
+          for (var j = 0; j < scallions.length; j++) {
+            if (!scallions[j].getAttribute("data-clicked")) {
+              scallions[j].style.visibility = "hidden";
+            }
+          }
+        });
+
+        // Add a click event listener
+        scareas[i].addEventListener("click", function() {
+          // Loop through each image and toggle its visibility and set data-clicked attribute
+          for (var j = 0; j < scallions.length; j++) {
+            if (scallions[j].getAttribute("data-clicked")) {
+              scallions[j].style.visibility = "hidden";
+              scallions[j].removeAttribute("data-clicked");
+            } else {
+              scallions[j].style.visibility = "visible";
+              scallions[j].setAttribute("data-clicked", true);
+            }
+          }
+        });
+      }
+      
+      
+      // bouncing scallion movement
+        const object = document.getElementById('bounce-image');
+        const container = document.getElementById('bounce-container');
+        const eyeballs = document.querySelectorAll('.eyeball, .scallion, .segmentlogo');
+
+        let x = 0;
+        let y = 0;
+        let xDirection = 1;
+        let yDirection = 1;
+        let speed = (container.clientWidth) / 384;
+        
+        // Add a flag to control the animation
+        let isMouseOver = false;
+
+        // Add mouseenter and mouseleave event listeners
+        object.addEventListener('mouseenter', () => {
+            isMouseOver = true;
+            xDHolder = xDirection;
+            yDHolder = yDirection;
+            xDirection = 0;
+            yDirection = 0;
+        });
+
+        object.addEventListener('mouseleave', () => {
+            isMouseOver = false;
+            // Reset direction when the mouse leaves the object
+            xDirection = xDHolder;
+            yDirection = yDHolder;
+        });
+
+        function updatePosition() {
+            object.style.height = `${(container.clientWidth) / 30}px`;
+            object.style.width = `${(container.clientWidth) / 30}px`;
+            
+            speed = (container.clientWidth) / 384;
+            x += xDirection * speed;
+            y += yDirection * speed;
+
+            // Check collision with the right and left edges
+            if (x + object.clientWidth >= container.clientWidth - speed || x <= 0) {
+                xDirection *= -1;
+            }
+
+            // Check collision with the top and bottom edges
+            if (y + object.clientHeight >= container.clientHeight - speed || y <= 0) {
+                yDirection *= -1;
+            }
+
+            // Check collision with eyeballs
+            eyeballs.forEach((eyeball) => {
+                const rect = eyeball.getBoundingClientRect();
+                if (
+                  (y + object.clientHeight >= rect.top &&
+                  y + object.clientHeight <= rect.bottom) ||
+                  (y >= rect.top &&
+                  y <= rect.bottom)
+                )
+                {
+                  if (x + object.clientWidth >= rect.left - speed && x <= rect.right + speed) {
+                    xDirection *= -1;
+                  }
+                }
+                if (
+                  (x + object.clientWidth >= rect.left &&
+                  x + object.clientWidth <= rect.right) ||
+                  (x >= rect.left &&
+                  x <= rect.right)
+                )
+                {
+                  if (y + object.clientHeight >= rect.top - speed && y <= rect.bottom + speed) {
+                    yDirection *= -1;
+                  }
+                }
+            });
+
+            object.style.transform = `translate(${x}px, ${y}px)`;
+            requestAnimationFrame(updatePosition);
+        }
+
+        updatePosition();
+
+        //closeout
+
+        // Function to show the black overlay and navigate to the target link
+        const overlay = document.getElementById('overlay');
+        const overlay1 = document.getElementById('overlay1');
+        
+        window.onload = function() {
+          overlay.style.top = '100%';
+          overlay1.style.top = '-100%';
+        }
+
+function showOverlayAndNavigate(targetLink) {
+  overlay.style.top = '50%';
+  overlay1.style.top = '-50%';
+  
+  setTimeout(function () {
+    window.location.href = targetLink;
+
+    setTimeout(function () {
+      overlay.style.top = '100%';
+      overlay1.style.top = '-100%';
+    }, 2000);
+  }, 2000); // Change the delay (in milliseconds) as needed
+  
+}
+
+// Add a click event listener to the clickable element
+document.getElementById('clickableElement').addEventListener('click', function () {
+  const targetLink = '/entered'; // Replace with your target link
+  showOverlayAndNavigate(targetLink);
+});
+    </script>
+  </body>
+</html>
