@@ -58,7 +58,9 @@ body {
     height: 27.35vw;
     opacity: 0;
 
-    animation: previewFade 15s ease delay iteration-count direction fill-mode;
+    transition: opacity 0.25s;
+
+    animation: previewFade 20s ease infinite, overlayHeight 0.5s forwards;
 }
 
 #scallion {
@@ -91,12 +93,16 @@ body {
 #eye2:hover ~ #eye2Img,
 #scallion:hover + #scalImg {
     opacity: 0.5;
+
+    animation: overlayHeight 0.5s forwards;
 }
 
 #eye1:checked ~ #eye1Img,
 #eye2:checked ~ #eye2Img,
 #scallion:checked + #scalImg {
     opacity: 1;
+
+    animation: overlayHeight 0.5s forwards;
 }
 
 
@@ -165,7 +171,11 @@ body {
     0.5vw -0.2vw 0 #BF9A27,
     0.6vw -0.2vw 0 #BF9A27,
     0.7vw -0.3vw 0 #BF9A27,
-    0.8vw -0.3vw 0 #BF9A27;
+    0.8vw -0.3vw 0 #BF9A27,
+    0.9vw -0.4vw 0 #BF9A27,
+    1.0vw -0.4vw 0 #BF9A27,
+    1.1vw -0.5vw 0 #BF9A27,
+    1.2vw -0.5vw 0 #BF9A27;
 }
 
 #preload {
@@ -193,10 +203,16 @@ body {
 
 @keyframes previewFade {
     0% {opacity: 0;}
-    96% {opacity: 0;}
-    97% {opacity: 0.5;}
-    98% {opacity: 0;}
-    99% {opacity: 0.5;}
+    90% {opacity: 0;}
+    92% {opacity: 0.5;}
+    94% {opacity: 0;}
+    96% {opacity: 0.5;}
+    100% {opacity: 0;}
+}
+
+@keyframes overlayHeight {
+    0% {height: inherit;}
+    100% {height: inherit;}
 }
 
 @media only screen and (max-width: 650px) {
@@ -218,7 +234,7 @@ body {
         opacity: 1;
     }
 
-    #scalImg, #eye1Img, #eye2Img {
-        display: none;
-    } 
+    #eye1Img, #eye2Img, #scalImg {
+        height: 54.7vw;
+    }
 }
