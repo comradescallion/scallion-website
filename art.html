@@ -212,17 +212,26 @@
             </p>
         </div>
 
+        <div class="modal" id="cabaretMod">
+            <img style="max-width: 100vw; max-height: 92vh; display: block; margin-bottom: max(2vh, 0.75em); margin-right: 100%;" src="art/cabaret.png">
+            <p>
+                <br>
+                <span style="background-color: black; color: white;">Scallions Growing Crushed at the Cabaret</span>
+            </p>
+        </div>
+
 
         <div id="showcase" style="height: 50%; position: absolute; top: 25%; left:5%">
             <div id="artContainer">
                 <div class="art" style="width: 0; margin: 0;"></div>
                 <div class="art" id="back1" onclick="goBack()"><div class="art1" id="back12" style="background-image: url(art/back.png);"></div></div>
-                <div class="art" id="onw" onclick="doModal(onwMod)"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
-                <div class="art" id="lapse" onclick="doModal(lapseMod)"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
-                <div class="art" id="resid" onclick="doModal(relapMod)"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
-                <div class="art" id="cd" onclick="doModal(cdMod)"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
-                <div class="art" id="action" onclick="doModal(actionMod)"><div class="art1" id="action1" style="background-image: url(/art/action.png);"></div></div>
+                <div class="art" id="cabaret" onclick="doModal(cabaretMod)"><div class="art1" id="cabaret1" style="background-image: url(/art/cabaret.png);"></div></div>
                 <div class="art" id="select" onclick="doModal(selectMod)"><div class="art1" id="select1" style="background-image: url(/art/scallion-selections.png);"></div></div>
+                <div class="art" id="action" onclick="doModal(actionMod)"><div class="art1" id="action1" style="background-image: url(/art/action.png);"></div></div>
+                <div class="art" id="cd" onclick="doModal(cdMod)"><div class="art1" id="cd1" style="background-image: url(/art/compact-delusions.png);"></div></div>
+                <div class="art" id="resid" onclick="doModal(relapMod)"><div class="art1" id="resid1" style="background-image: url(/art/residential-relapse.jpg);"></div></div>
+                <div class="art" id="lapse" onclick="doModal(lapseMod)"><div class="art1" id="lapse1" style="background-image: url(/art/temporary-lapse.png);"></div></div>
+                <div class="art" id="onw" onclick="doModal(onwMod)"><div class="art1" id="onw1" style="background-image: url(/art/onward-rapscallion.png);"></div></div>
                 <div class="art" id="back2" onclick="goBack()"><div class="art1" id="back22" style="background-image: url(art/back.png);"></div></div>
                 <div class="art" style="width: 100vw;"></div>
             </div>
@@ -262,6 +271,8 @@
             const action1 = document.getElementById("action1");
             const select = document.getElementById("select");
             const select1 = document.getElementById("select1");
+            const cabaret = document.getElementById("cabaret");
+            const cabaret1 = document.getElementById("cabaret1");
 
             const back1 = document.getElementById("back1");
             const back2 = document.getElementById("back2");
@@ -324,6 +335,7 @@
             flipUnflip(cd, cd1, "url('/art/compact-delusions1.png')", "url('/art/compact-delusions.png')");
             flipUnflip(action, action1, "url(/art/action.png)", "url(/art/action.png)");
             flipUnflip(select, select1, "url(/art/scallion-selections1.png)", "url(/art/scallion-selections.png)");
+            flipUnflip(cabaret, cabaret1, "url(/art/cabaret1.png)", "url(/art/cabaret.png)");
 
             flipUnflip(back1, back12, "url(/art/back.png)", "url(/art/back.png)");
             flipUnflip(back2, back22, "url(/art/back.png)", "url(/art/back.png)");
@@ -334,7 +346,7 @@
             artContainer.style.left = "0vh";
             isMoving = false;
 
-            scrollShowcaseR(45);
+            //scrollShowcaseR(45);
 
             function scrollShowcaseL(num) {
                 if (!isMoving) {
