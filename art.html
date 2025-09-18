@@ -129,6 +129,7 @@
                 background:black; 
                 color: white;
                 cursor: pointer;
+                z-index: 2;
             }
 
             p {
@@ -442,6 +443,53 @@
                 /* modImg = document.getElementById("modImg");
                 theModal.style.width = modImg.clientWidth + "px";
                 console.log(modImg.clientWidth); */
+
+
+                //change modal image on click
+                const modalImg = theModal.querySelector('img');
+
+                modalImg.addEventListener('click', function () {
+                    const src = modalImg.src;
+                    const parts = src.split('/');
+                    const fileName = parts.pop();
+                    const path = parts.join('/');
+
+                    if (fileName == "sodium.png") {
+                        newName = "sodium1.gif";
+                        hasOne = false;
+                    }
+                    else if (fileName == "sodium1.gif") {
+                        newName = "sodium.png";
+                        hasOne = true;
+                    }
+                    else if (fileName == "action.png") {
+                        newName = "action.png"
+
+                        if (modalImg.style.transform == "scaleX(1)" || modalImg.style.transform == "") {
+                            hasOne = false;
+                        }
+                        else {
+                            hasOne = true;
+                        }
+                    }
+                    else {
+                        const match = fileName.match(/^(.+?)(1)?(\.[a-zA-Z0-9]+)$/);
+                        if (!match) return; // Not a valid image format
+
+                        [_, name, hasOne, ext] = match;
+
+                        newName = hasOne ? `${name}${ext}` : `${name}1${ext}`;
+                    }
+                    
+                    modalImg.src = path ? `${path}/${newName}` : newName;
+
+                    if (!Boolean(hasOne)) {
+                        modalImg.style.transform = "scaleX(-1)";
+                    }
+                    else {
+                        modalImg.style.transform = "scaleX(1)";
+                    }
+                });
             }
 
             function undoModal() {
