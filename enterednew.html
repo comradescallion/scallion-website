@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cool scallion menu</title>
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="icon" type="image/x-icon" href="scallionyellow.png">
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #centerbar {
+            margin-top: 4vh;
+            height: 19vh;
+            width: 100vw;
+            background-color: #ffce34;
+            transition: 2s;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            padding-top: 3vh;
+            padding-bottom: 3vh;
+        }
+
+        #centerbar::before {
+            min-width: 0.5vw;
+            content: "";
+            flex-shrink: 1;
+        }
+
+        #centerbar::after {
+            min-width: 0.5vw;
+            content: "";
+            flex-shrink: 1;
+        }
+
+        #centerbar:hover {
+            height: 31.5vh;
+        }
+
+        .item {
+            min-width: 0;
+            margin-left: 0.5vw;
+            margin-right: 0.5vw;
+            flex-shrink: 1;
+            flex-grow: 1;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .item:first-child {
+            margin-left: 1vw;
+        }
+
+        .item:last-child {
+            margin-right: 1vw;
+        }
+
+        .item div {
+            max-width: 100%;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .item div a {
+            background-color: white;
+            max-height: 100%;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+        }
+
+        #back {
+            color: white;
+            flex-basis: 100%;
+            text-align: center;
+            font-size: 3vh;
+            margin-top: 1vh;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="centerbar">
+            <div class="item"><div>
+                <a href="https://scallion.farm" target="_blank"></a>
+            </div></div>
+            <div class="item"><div>
+                <a href="https://scallion.farm" target="_blank"></a>
+            </div></div>
+            <div class="item"><div>
+                <a href="https://scallion.farm" target="_blank"></a>
+            </div></div>
+            <div class="item"><div>
+                <a href="https://scallion.farm" target="_blank"></a>
+            </div></div>
+        </div>
+        <div id="back">go back</div>
+    </div>
+</body>
+</html>
